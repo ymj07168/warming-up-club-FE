@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>module</title>
+  </head>
+  <body>
+    <!-- defer 효과, 파싱된 후 호출: object module -->
+    <script type="module">
+      alert(`${typeof button} module`);
+    </script>
+    <!-- 파싱되기 전에 호출: undefined no module -->
+    <script>
+      alert(`${typeof button} no module`);
+    </script>
+    <button id="button">Button</button>
+  </body>
+</html>
