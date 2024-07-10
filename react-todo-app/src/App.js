@@ -3,13 +3,18 @@ import "./App.css";
 import List from "./components/List";
 import Form from "./components/Form";
 
+const initialTodoData = localStorage.getItem("todoData")
+  ? JSON.parse(localStorage.getItem("todoData"))
+  : [];
+
 export default function App() {
-  const [todoData, setTodoData] = useState([]);
+  const [todoData, setTodoData] = useState(initialTodoData);
   const [value, setValue] = useState("");
 
   // 전체 할 일 제거
   const handleRemoveClick = () => {
     setTodoData([]);
+    localStorage.setItem("todoData", JSON.stringify([]));
   };
 
   // 할 일 제거
@@ -17,6 +22,7 @@ export default function App() {
     (id) => {
       let newTodoData = todoData.filter((data) => data.id !== id);
       setTodoData(newTodoData);
+      localStorage.setItem("todoData", JSON.stringify(newTodoData));
     },
     [todoData]
   );
@@ -33,6 +39,7 @@ export default function App() {
     };
 
     setTodoData((prev) => [...prev, newTodo]);
+    localStorage.setItem("todoData", JSON.stringify([...todoData, newTodo]));
     setValue("");
   };
 
