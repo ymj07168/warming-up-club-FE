@@ -10,6 +10,7 @@ const ListItem = React.memo(
     setTodoData,
     provided,
     snapshot,
+    handleClick,
   }) => {
     // 체크박스 핸들러
     const handleCompleteChange = (id) => {
@@ -19,12 +20,6 @@ const ListItem = React.memo(
         }
         return data;
       });
-      setTodoData(newTodoData);
-    };
-
-    // 할 일 제거
-    const handleClick = (id) => {
-      let newTodoData = todoData.filter((data) => data.id !== id);
       setTodoData(newTodoData);
     };
 
